@@ -1,15 +1,15 @@
 src = $(wildcard *.cpp)
 inc = $(wildcard *.hpp)
-obj = robovision.o
-obj_debug = debug.o
+obj = vision-server.o
+obj_debug = debug-vision-server.o
 
 pc = pkg-config /opt/lib/pkgconfig/opencv.pc
 
 $(obj): $(src) $(inc)
-	g++ `$(pc) --cflags` -o $(obj) $(src) `$(pc) --libs` -lpthread -std=c++11 -Wall -Wextra -Wno-missing-field-initializers
+	g++ `$(pc) --cflags` -O2 -o $(obj) $(src) `$(pc) --libs` -lpthread -std=c++11 -Wall
 
 $(obj_debug): $(src) $(inc)
-	g++ -g `$(pc) --cflags` -o $(obj_debug) $(src) `$(pc) --libs` -lpthread -std=c++11 -Wall -Wextra
+	g++ -g `$(pc) --cflags` -Og -o $(obj_debug) $(src) `$(pc) --libs` -lpthread -std=c++11 -Wall
 
 run: $(obj)
 	./$(obj)
@@ -18,4 +18,4 @@ debug: $(obj_debug)
 	gdb $(obj_debug)
 
 clean:
-	-rm $(obj) $(obj_debug)
+	rm -f $(obj) $(obj_debug)
