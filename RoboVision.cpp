@@ -40,6 +40,8 @@ class SAMVisionServer final : public ImageServer
 
 	DataServer dataServer;
 
+	int nFrames = 0;
+
 public:
 	SAMVisionServer(int camID, std::string saveFilename, const char* dataPort, const char* imagePort) :
 		ImageServer(imagePort),
@@ -111,7 +113,7 @@ public:
 				auto rect = cv::boundingRect(*pWinningContour);
 				cv::rectangle(frame, rect.tl(), rect.br(), contourColor, contourThickness);
 
-				dataServer.bufferData('R', { rect.x, rect.y, rect.width, rect.height, quad[0].y, quad[3].y, distLine, 0, midLine });
+				dataServer.bufferData('R', { rect.x, rect.y, rect.width, rect.height, quad[0].y, quad[3].y, distLine, ++nFrames, midLine });
 				dataServer.run(17);
 			}
 		}
