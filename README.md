@@ -2,9 +2,10 @@
 
 This is an in-progress example of a program that processes real time video from a V4L-compatible webcam and streams both the image and the extracted data. It is the same algorithm as that used by Team Paradox during the Stronghold season.
 
-The program has been tested on
-	- **NVIDIA Jetson TK1** running **Linux For Tegra R21.4** and **OpenCV 3.1.0**
-	- **NVIDIA Jetson TX1** running **Linux For Tegra R24.2** and **OpenCV 3.2.0**
+The program has been tested on the following platforms:
+
+- **NVIDIA Jetson TK1** running **Linux For Tegra R21.4** and **OpenCV 3.1.0**
+- **NVIDIA Jetson TX1** running **Linux For Tegra R24.2** and **OpenCV 3.2.0**
 
 The **Microsoft LifeCam HD-3000** USB webcam was used, which was supported by the built-in Video4Linux2 drivers. However, this program should work without modification on any other Linux system with OpenCV and the appropriate drivers for your camera.
 
