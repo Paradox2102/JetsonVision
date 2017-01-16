@@ -3,13 +3,13 @@ inc = $(wildcard *.hpp)
 obj = vision-server.o
 obj_debug = debug-vision-server.o
 
-pc = pkg-config /opt/lib/pkgconfig/opencv.pc
+pc = pkg-config opencv
 
 $(obj): $(src) $(inc)
-	g++ `$(pc) --cflags` -O2 -o $(obj) $(src) `$(pc) --libs` -lpthread -std=c++11 -Wall
+	g++ $(src) -o $(obj) `$(pc) --cflags --libs` -O2 -std=c++14 -Wall
 
 $(obj_debug): $(src) $(inc)
-	g++ -g `$(pc) --cflags` -Og -o $(obj_debug) $(src) `$(pc) --libs` -lpthread -std=c++11 -Wall
+	g++ $(src) -o $(obj_debug) `$(pc) --cflags --libs` -g -Og -std=c++14 -Wall
 
 run: $(obj)
 	./$(obj)
