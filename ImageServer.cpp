@@ -28,10 +28,10 @@ void ImageServer::readData(int fd)
 	buf[len] = '\0';
 
 	char cmd;
-	int16_t arg;
-	if (std::sscanf(buf, "%c %" SCNd16, &cmd, &arg) >= 1)
+	int16_t arg1, arg2;
+	if (std::sscanf(buf, "%c %" SCNd16 " %" SCNd16, &cmd, &arg1, &arg2) >= 1)
 	{
-		handleCmd(cmd, arg);
+		handleCmd(cmd, arg1, arg2);
 	}
 }
 

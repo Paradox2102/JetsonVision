@@ -29,7 +29,7 @@ Server::Server(const char* port, int backlog)
 	// Only use first result
 	sockfd = check(socket(info->ai_family, info->ai_socktype, info->ai_protocol));
 
-	static const bool yes = true;
+	static const int yes = 1;
 	::setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof yes);
 
 	check(::bind(sockfd, info->ai_addr, info->ai_addrlen));

@@ -67,7 +67,7 @@ public:
 	void bufferFrame(const ImageHeader& header, const cv::Mat& image);
 
 protected:
-	virtual void handleCmd(char cmd, int arg) = 0;
+	virtual void handleCmd(char cmd, int arg1, int arg2) = 0;
 
 	virtual void readData(int fd) override;
 	virtual void writeData(int fd) override;
