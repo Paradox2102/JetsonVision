@@ -6,8 +6,9 @@ The program has been tested on the following platforms:
 
 - **NVIDIA Jetson TK1** running **Linux For Tegra R21.4** and **OpenCV 3.1.0**
 - **NVIDIA Jetson TX1** running **Linux For Tegra R24.2** and **OpenCV 3.2.0**
+- **Raspberry Pi 2** and **Raspberry Pi 3** running **Raspbian Jessie** and **OpenCV 3.2.0**
 
-The **Microsoft LifeCam HD-3000** USB webcam was used, which was supported by the built-in Video4Linux2 drivers. However, this program should work without modification on any other Linux system with OpenCV and the appropriate drivers for your camera.
+The **Microsoft LifeCam HD-3000** USB webcam was used for the Jetson, while the **Raspberry Pi Camera** was used for the Raspberry Pi. Both were supported by the built-in Video4Linux2 drivers. However, this program should work without modification on any other Linux system with OpenCV and the appropriate drivers for your camera.
 
 ## Usage
 
@@ -15,7 +16,7 @@ The **Microsoft LifeCam HD-3000** USB webcam was used, which was supported by th
 	- **Remotely:** Use SSH (through [PuTTY](http://www.putty.org/) if you are using Windows).
 	- **Locally:** Plug in a monitor (HDMI port) and keyboard (USB port). After login, open a Terminal window.
 2. Install build tools (GCC, C++ libraries, Make, pkg-config)
-	- `apt-get install build-essential pkg-config` as root
+	- `apt-get install build-essential git cmake make pkg-config` as root
 3. Install OpenCV from source
 	- Detailed instructions: http://docs.opencv.org/master/d7/d9f/tutorial_linux_install.html
 4. Build the example
