@@ -5,5 +5,5 @@ public:
 	V4LController(int device);
 	
 	int get(const char* prop);
-	int set(const char* prop, int value);
+	void set(const char* prop, int value);
 };

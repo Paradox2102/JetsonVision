@@ -45,7 +45,7 @@ class SAMVisionServer final : public ImageServer
 	{
 		0,	// uint32_t imageSize;
 		0,	// int16_t MinH;
-		255,	// int16_t MaxH;
+		179,	// int16_t MaxH;
 		0,	// int16_t MinS;
 		255,	// int16_t MaxS;
 		0,	// int16_t MinV;
@@ -236,7 +236,7 @@ public:
 
 private:
 	template <typename T>
-	static constexpr T limit(T n, T min, T max)
+	static T limit(T n, T min, T max)
 	{
 		if (n > max)
 		{
@@ -253,7 +253,7 @@ private:
 	}
 
 	template <typename T>
-	static constexpr T limit(T n, T min)
+	static T limit(T n, T min)
 	{
 		if (n < min)
 		{
@@ -270,7 +270,7 @@ private:
 		switch (cmd)
 		{
 		case 'h':
-			thresholdMin[0] = header.MinH = limit(header.MinH + arg1, 0, 255);
+			thresholdMin[0] = header.MinH = limit(header.MinH + arg1, 0, 179);
 			break;
 
 		case 's':
@@ -282,7 +282,7 @@ private:
 			break;
 
 		case 'H':
-			thresholdMax[0] = header.MaxH = limit(header.MaxH + arg1, 0, 255);
+			thresholdMax[0] = header.MaxH = limit(header.MaxH + arg1, 0, 179);
 			break;
 
 		case 'S':
@@ -295,7 +295,7 @@ private:
 
 		case 'E':
 			header.camShutterSpeed = limit(header.camShutterSpeed + arg1, 0);
-			camCtrl.set("exposure_absolute", header.camShutterSpeed);
+			camCtrl.set("exposure_time_absolute", header.camShutterSpeed);
 			break;
 
 		case 'm':
